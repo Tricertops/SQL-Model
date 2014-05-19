@@ -1,5 +1,5 @@
 //
-//  SQL_Model_Tests.m
+//  SQLEntityTest.m
 //  SQL Model Tests
 //
 //  Created by Martin Kiss on 19.5.14.
@@ -10,7 +10,7 @@
 
 
 
-@interface SQL_Model_Tests : XCTestCase
+@interface SQLEntityTest : XCTestCase
 
 @end
 
@@ -18,7 +18,7 @@
 
 
 
-@implementation SQL_Model_Tests
+@implementation SQLEntityTest
 
 
 
