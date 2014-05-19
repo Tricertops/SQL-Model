@@ -12,6 +12,8 @@
 		5B1F4AA4192A6E9400158200 /* SQLEntityTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B1F4AA2192A6E9400158200 /* SQLEntityTest.m */; };
 		5B1F4AA8192A6F9800158200 /* SQLTestBottle.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B1F4AA7192A6F9800158200 /* SQLTestBottle.m */; };
 		5B1F4AA9192A700400158200 /* libSQLModel.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B1F4A5A192A6AAB00158200 /* libSQLModel.a */; };
+		5B1F4AAC192A70B300158200 /* SQLProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B1F4AAA192A70B300158200 /* SQLProperty.h */; };
+		5B1F4AAD192A70B300158200 /* SQLProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B1F4AAB192A70B300158200 /* SQLProperty.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +36,8 @@
 		5B1F4AA2192A6E9400158200 /* SQLEntityTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SQLEntityTest.m; sourceTree = "<group>"; };
 		5B1F4AA6192A6F9800158200 /* SQLTestBottle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SQLTestBottle.h; sourceTree = "<group>"; };
 		5B1F4AA7192A6F9800158200 /* SQLTestBottle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SQLTestBottle.m; sourceTree = "<group>"; };
+		5B1F4AAA192A70B300158200 /* SQLProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SQLProperty.h; sourceTree = SOURCE_ROOT; };
+		5B1F4AAB192A70B300158200 /* SQLProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SQLProperty.m; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +83,8 @@
 				5B1F4A84192A6B6F00158200 /* SQLEntity.h */,
 				5B1F4A85192A6B6F00158200 /* SQLEntity.m */,
 				5B1F4A88192A6CEC00158200 /* SQLAnnotations.h */,
+				5B1F4AAA192A70B300158200 /* SQLProperty.h */,
+				5B1F4AAB192A70B300158200 /* SQLProperty.m */,
 			);
 			name = Sources;
 			path = "SQL Model";
@@ -110,6 +116,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B1F4AAC192A70B300158200 /* SQLProperty.h in Headers */,
 				5B1F4A86192A6B6F00158200 /* SQLEntity.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -201,6 +208,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5B1F4A87192A6B6F00158200 /* SQLEntity.m in Sources */,
+				5B1F4AAD192A70B300158200 /* SQLProperty.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
