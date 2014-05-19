@@ -90,17 +90,38 @@
 }
 
 
-- (NSArray *)annotationsFromProtocols:(NSArray *)protocols {
+- (NSArray *)annotationsFromProtocols:(NSArray *)inProtocols {
+    NSMutableArray *protocols = [[NSMutableArray alloc] init];
     NSMutableArray *annotations = [[NSMutableArray alloc] init];
-    NSCharacterSet * const whitespace = [NSCharacterSet whitespaceAndNewlineCharacterSet];
+    //TODO: Whitespace?
     
-    for (NSString *protocol in protocols) {
-        NSString *annotation = [protocol stringByTrimmingCharactersInSet:whitespace];
-        if ([annotation hasPrefix:@"SQL"]) {
-            [annotations addObject:annotation];
+    while (protocols.count) {
+        NSString *protocolName = protocols[0];
+        [protocols removeObjectAtIndex:0];
+        
+        if ([protocolName hasPrefix:@"SQL"] && objc_getProtocol(protocolName.UTF8String)) {
+            
+            if ( ! [annotations containsObject:protocolName]) {
+                [annotations addObject:protocolName];
+            }
+            
+            NSArray *superProtocols = [self superProtocolsOfProtocol:protocolName];
+            [protocols addObjectsFromArray:superProtocols];
         }
     }
     return [annotations copy];
+}
+
+
+- (NSArray *)superProtocolsOfProtocol:(NSString *)protocolName {
+    NSMutableArray *protocols = [[NSMutableArray alloc] init];
+    Protocol *protocol = objc_getProtocol(protocolName.UTF8String);
+    unsigned int count = 0;
+    Protocol * __unsafe_unretained *superProtocols = protocol_copyProtocolList(protocol, &count);
+    for (unsigned int index = 0; index < count; index++) {
+        [protocols addObject:@( protocol_getName(superProtocols[index]) )];
+    }
+    return [protocols copy];
 }
 
 
