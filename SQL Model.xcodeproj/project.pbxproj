@@ -9,17 +9,38 @@
 /* Begin PBXBuildFile section */
 		5B1F4A86192A6B6F00158200 /* SQLEntity.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B1F4A84192A6B6F00158200 /* SQLEntity.h */; };
 		5B1F4A87192A6B6F00158200 /* SQLEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B1F4A85192A6B6F00158200 /* SQLEntity.m */; };
+		5B1F4AA4192A6E9400158200 /* SQLEntityTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B1F4AA2192A6E9400158200 /* SQLEntityTest.m */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		5B1F4A9A192A6E5400158200 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5B1F4A52192A6AAB00158200 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5B1F4A59192A6AAB00158200;
+			remoteInfo = "SQL Model";
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		5B1F4A5A192A6AAB00158200 /* libSQLModel.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSQLModel.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B1F4A84192A6B6F00158200 /* SQLEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SQLEntity.h; sourceTree = SOURCE_ROOT; };
 		5B1F4A85192A6B6F00158200 /* SQLEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SQLEntity.m; sourceTree = SOURCE_ROOT; };
 		5B1F4A88192A6CEC00158200 /* SQLAnnotations.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SQLAnnotations.h; sourceTree = SOURCE_ROOT; };
+		5B1F4A8D192A6E5400158200 /* SQL Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SQL Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5B1F4AA0192A6E9400158200 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5B1F4AA2192A6E9400158200 /* SQLEntityTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SQLEntityTest.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		5B1F4A57192A6AAB00158200 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5B1F4A8A192A6E5400158200 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -33,6 +54,7 @@
 			isa = PBXGroup;
 			children = (
 				5B1F4A63192A6AAB00158200 /* Sources */,
+				5B1F4A9F192A6E9400158200 /* Tests */,
 				5B1F4A5B192A6AAB00158200 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -41,6 +63,7 @@
 			isa = PBXGroup;
 			children = (
 				5B1F4A5A192A6AAB00158200 /* libSQLModel.a */,
+				5B1F4A8D192A6E5400158200 /* SQL Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -54,6 +77,15 @@
 			);
 			name = Sources;
 			path = "SQL Model";
+			sourceTree = "<group>";
+		};
+		5B1F4A9F192A6E9400158200 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				5B1F4AA0192A6E9400158200 /* Info.plist */,
+				5B1F4AA2192A6E9400158200 /* SQLEntityTest.m */,
+			);
+			path = Tests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -87,6 +119,24 @@
 			productReference = 5B1F4A5A192A6AAB00158200 /* libSQLModel.a */;
 			productType = "com.apple.product-type.library.static";
 		};
+		5B1F4A8C192A6E5400158200 /* SQL Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5B1F4A9C192A6E5400158200 /* Build configuration list for PBXNativeTarget "SQL Tests" */;
+			buildPhases = (
+				5B1F4A89192A6E5400158200 /* Sources */,
+				5B1F4A8A192A6E5400158200 /* Frameworks */,
+				5B1F4A8B192A6E5400158200 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5B1F4A9B192A6E5400158200 /* PBXTargetDependency */,
+			);
+			name = "SQL Tests";
+			productName = "SQL Model Tests";
+			productReference = 5B1F4A8D192A6E5400158200 /* SQL Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -96,6 +146,11 @@
 				CLASSPREFIX = SQL;
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = Triceratops;
+				TargetAttributes = {
+					5B1F4A8C192A6E5400158200 = {
+						TestTargetID = 5B1F4A59192A6AAB00158200;
+					};
+				};
 			};
 			buildConfigurationList = 5B1F4A55192A6AAB00158200 /* Build configuration list for PBXProject "SQL Model" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -110,9 +165,20 @@
 			projectRoot = "";
 			targets = (
 				5B1F4A59192A6AAB00158200 /* SQL Model */,
+				5B1F4A8C192A6E5400158200 /* SQL Tests */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5B1F4A8B192A6E5400158200 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		5B1F4A56192A6AAB00158200 /* Sources */ = {
@@ -123,7 +189,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		5B1F4A89192A6E5400158200 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5B1F4AA4192A6E9400158200 /* SQLEntityTest.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		5B1F4A9B192A6E5400158200 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5B1F4A59192A6AAB00158200 /* SQL Model */;
+			targetProxy = 5B1F4A9A192A6E5400158200 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		5B1F4A7C192A6AAB00158200 /* Debug */ = {
@@ -238,6 +320,36 @@
 			};
 			name = Release;
 		};
+		5B1F4A9D192A6E5400158200 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = Tests/Info.plist;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		5B1F4A9E192A6E5400158200 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = Tests/Info.plist;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -258,6 +370,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		5B1F4A9C192A6E5400158200 /* Build configuration list for PBXNativeTarget "SQL Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5B1F4A9D192A6E5400158200 /* Debug */,
+				5B1F4A9E192A6E5400158200 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
