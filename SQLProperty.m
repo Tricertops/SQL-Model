@@ -20,18 +20,15 @@
 
 
 
-- (instancetype)initWithEntity:(Class)entityClass name:(NSString *)name {
+- (instancetype)initWithEntity:(Class)entityClass property:(objc_property_t)property {
     self = [super init];
     if (self) {
         
         SQLAssert(entityClass) return nil;
         self->_entityClass = entityClass;
         
-        SQLAssert(name.length) return nil;
-        self->_name = name;
-        
-        self->_property = class_getProperty(entityClass, name.UTF8String);
-        SQLAssertMessage(self.property, @"Property with name %@ not found in entity %@.", name, entityClass) return nil;
+        SQLAssert(property) return nil;
+        self->_property = property;
         
         NSDictionary *attributes = [self attributesOfProperty:self.property];
         
@@ -48,12 +45,15 @@
         self->_valueClass = [self classFromType:type protocols:&protocols];
         self->_annotations = [self annotationsFromProtocols:protocols];
         
-        self->_isManaged = (self.annotations.count > 0);
+        BOOL isManaged = (self.annotations.count > 0);
+        if ( ! isManaged) return nil;
+        
         self->_allowsNil = [self hasAnnotation:@protocol(SQLNotNil)];
         self->_isUnique = [self hasAnnotation:@protocol(SQLUnique)];
         self->_isPrimaryKey = [self hasAnnotation:@protocol(SQLPrimary)];
         self->_isIndexed = [self hasAnnotation:@protocol(SQLIndexed)];
         
+        self->_name = @(property_getName(property));
         self->_ivar = [attributes objectForKey:@"V"];
     }
     return self;

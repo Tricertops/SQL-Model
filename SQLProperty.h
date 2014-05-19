@@ -28,7 +28,6 @@
 
 @property (atomic, readonly, strong) NSArray *annotations;
 - (BOOL)hasAnnotation:(Protocol *)annotation;
-@property (atomic, readonly, assign) BOOL isManaged;
 @property (atomic, readonly, assign) BOOL allowsNil;
 @property (atomic, readonly, assign) BOOL isUnique;
 @property (atomic, readonly, assign) BOOL isPrimaryKey;
@@ -47,7 +46,7 @@
 @interface SQLProperty (/* Private */)
 
 
-- (instancetype)initWithEntity:(Class)entityClass name:(NSString *)name;
+- (instancetype)initWithEntity:(Class)class property:(objc_property_t)property;
 @property (atomic, readonly, assign) objc_property_t property;
 
 
