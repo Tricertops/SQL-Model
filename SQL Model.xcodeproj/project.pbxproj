@@ -10,6 +10,8 @@
 		5B1F4A86192A6B6F00158200 /* SQLEntity.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B1F4A84192A6B6F00158200 /* SQLEntity.h */; };
 		5B1F4A87192A6B6F00158200 /* SQLEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B1F4A85192A6B6F00158200 /* SQLEntity.m */; };
 		5B1F4AA4192A6E9400158200 /* SQLEntityTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B1F4AA2192A6E9400158200 /* SQLEntityTest.m */; };
+		5B1F4AA8192A6F9800158200 /* SQLTestBottle.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B1F4AA7192A6F9800158200 /* SQLTestBottle.m */; };
+		5B1F4AA9192A700400158200 /* libSQLModel.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B1F4A5A192A6AAB00158200 /* libSQLModel.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,6 +32,8 @@
 		5B1F4A8D192A6E5400158200 /* SQL Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SQL Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B1F4AA0192A6E9400158200 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5B1F4AA2192A6E9400158200 /* SQLEntityTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SQLEntityTest.m; sourceTree = "<group>"; };
+		5B1F4AA6192A6F9800158200 /* SQLTestBottle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SQLTestBottle.h; sourceTree = "<group>"; };
+		5B1F4AA7192A6F9800158200 /* SQLTestBottle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SQLTestBottle.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,6 +48,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B1F4AA9192A700400158200 /* libSQLModel.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -84,8 +89,18 @@
 			children = (
 				5B1F4AA0192A6E9400158200 /* Info.plist */,
 				5B1F4AA2192A6E9400158200 /* SQLEntityTest.m */,
+				5B1F4AA5192A6F8900158200 /* Supporting Files */,
 			);
 			path = Tests;
+			sourceTree = "<group>";
+		};
+		5B1F4AA5192A6F8900158200 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				5B1F4AA6192A6F9800158200 /* SQLTestBottle.h */,
+				5B1F4AA7192A6F9800158200 /* SQLTestBottle.m */,
+			);
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -193,6 +208,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B1F4AA8192A6F9800158200 /* SQLTestBottle.m in Sources */,
 				5B1F4AA4192A6E9400158200 /* SQLEntityTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
