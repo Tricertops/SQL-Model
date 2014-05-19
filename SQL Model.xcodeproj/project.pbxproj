@@ -1,0 +1,263 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5B1F4A86192A6B6F00158200 /* SQLEntity.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B1F4A84192A6B6F00158200 /* SQLEntity.h */; };
+		5B1F4A87192A6B6F00158200 /* SQLEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B1F4A85192A6B6F00158200 /* SQLEntity.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		5B1F4A5A192A6AAB00158200 /* libSQLModel.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSQLModel.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		5B1F4A84192A6B6F00158200 /* SQLEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SQLEntity.h; sourceTree = SOURCE_ROOT; };
+		5B1F4A85192A6B6F00158200 /* SQLEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SQLEntity.m; sourceTree = SOURCE_ROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5B1F4A57192A6AAB00158200 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5B1F4A51192A6AAB00158200 = {
+			isa = PBXGroup;
+			children = (
+				5B1F4A63192A6AAB00158200 /* Sources */,
+				5B1F4A5B192A6AAB00158200 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		5B1F4A5B192A6AAB00158200 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5B1F4A5A192A6AAB00158200 /* libSQLModel.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5B1F4A63192A6AAB00158200 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				5B1F4A84192A6B6F00158200 /* SQLEntity.h */,
+				5B1F4A85192A6B6F00158200 /* SQLEntity.m */,
+			);
+			name = Sources;
+			path = "SQL Model";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		5B1F4A58192A6AAB00158200 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5B1F4A86192A6B6F00158200 /* SQLEntity.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		5B1F4A59192A6AAB00158200 /* SQL Model */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5B1F4A7E192A6AAB00158200 /* Build configuration list for PBXNativeTarget "SQL Model" */;
+			buildPhases = (
+				5B1F4A56192A6AAB00158200 /* Sources */,
+				5B1F4A57192A6AAB00158200 /* Frameworks */,
+				5B1F4A58192A6AAB00158200 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "SQL Model";
+			productName = "SQL Model";
+			productReference = 5B1F4A5A192A6AAB00158200 /* libSQLModel.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5B1F4A52192A6AAB00158200 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = SQL;
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = Triceratops;
+			};
+			buildConfigurationList = 5B1F4A55192A6AAB00158200 /* Build configuration list for PBXProject "SQL Model" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 5B1F4A51192A6AAB00158200;
+			productRefGroup = 5B1F4A5B192A6AAB00158200 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5B1F4A59192A6AAB00158200 /* SQL Model */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5B1F4A56192A6AAB00158200 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5B1F4A87192A6B6F00158200 /* SQLEntity.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		5B1F4A7C192A6AAB00158200 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_SECURITY_FLOATLOOPCOUNTER = YES;
+				CLANG_ANALYZER_SECURITY_INSECUREAPI_RAND = YES;
+				CLANG_ANALYZER_SECURITY_INSECUREAPI_STRCPY = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_ATOMIC_PROPERTIES = YES;
+				CLANG_WARN_OBJC_REPEATED_USE_OF_WEAK = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_TREAT_INCOMPATIBLE_POINTER_TYPE_WARNINGS_AS_ERRORS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_FOUR_CHARACTER_CONSTANTS = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNKNOWN_PRAGMAS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_LABEL = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				ONLY_ACTIVE_ARCH = YES;
+				RUN_CLANG_STATIC_ANALYZER = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		5B1F4A7D192A6AAB00158200 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_SECURITY_FLOATLOOPCOUNTER = YES;
+				CLANG_ANALYZER_SECURITY_INSECUREAPI_RAND = YES;
+				CLANG_ANALYZER_SECURITY_INSECUREAPI_STRCPY = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_ATOMIC_PROPERTIES = YES;
+				CLANG_WARN_OBJC_REPEATED_USE_OF_WEAK = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_TREAT_INCOMPATIBLE_POINTER_TYPE_WARNINGS_AS_ERRORS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_FOUR_CHARACTER_CONSTANTS = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNKNOWN_PRAGMAS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_LABEL = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				RUN_CLANG_STATIC_ANALYZER = YES;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		5B1F4A7F192A6AAB00158200 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_STATIC_ANALYZER_MODE = deep;
+				PRODUCT_NAME = SQLModel;
+			};
+			name = Debug;
+		};
+		5B1F4A80192A6AAB00158200 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_STATIC_ANALYZER_MODE = deep;
+				PRODUCT_NAME = SQLModel;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5B1F4A55192A6AAB00158200 /* Build configuration list for PBXProject "SQL Model" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5B1F4A7C192A6AAB00158200 /* Debug */,
+				5B1F4A7D192A6AAB00158200 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5B1F4A7E192A6AAB00158200 /* Build configuration list for PBXNativeTarget "SQL Model" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5B1F4A7F192A6AAB00158200 /* Debug */,
+				5B1F4A80192A6AAB00158200 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 5B1F4A52192A6AAB00158200 /* Project object */;
+}
