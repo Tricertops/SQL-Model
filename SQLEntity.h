@@ -6,8 +6,15 @@
 //  Copyright (c) 2014 Triceratops. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+@import Foundation;
+#import "SQLAnnotations.h"
+
+
+
+
 
 @interface SQLEntity : NSObject
 
 @end
+
+

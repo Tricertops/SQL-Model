@@ -15,6 +15,7 @@
 		5B1F4A5A192A6AAB00158200 /* libSQLModel.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSQLModel.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B1F4A84192A6B6F00158200 /* SQLEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SQLEntity.h; sourceTree = SOURCE_ROOT; };
 		5B1F4A85192A6B6F00158200 /* SQLEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SQLEntity.m; sourceTree = SOURCE_ROOT; };
+		5B1F4A88192A6CEC00158200 /* SQLAnnotations.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SQLAnnotations.h; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,6 +50,7 @@
 			children = (
 				5B1F4A84192A6B6F00158200 /* SQLEntity.h */,
 				5B1F4A85192A6B6F00158200 /* SQLEntity.m */,
+				5B1F4A88192A6CEC00158200 /* SQLAnnotations.h */,
 			);
 			name = Sources;
 			path = "SQL Model";

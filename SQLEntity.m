@@ -8,6 +8,12 @@
 
 #import "SQLEntity.h"
 
+
+
+
+
 @implementation SQLEntity
 
 @end
+
+
