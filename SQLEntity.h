@@ -15,6 +15,10 @@
 
 @interface SQLEntity : NSObject
 
+
++ (NSDictionary *)sql_properties;
+
+
 @end
 
 
