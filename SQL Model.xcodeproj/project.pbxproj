@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B0738F8192BBEB300AA0299 /* SQLAnnotations.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B0738F7192BBEB300AA0299 /* SQLAnnotations.m */; };
 		5B1F4A86192A6B6F00158200 /* SQLEntity.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B1F4A84192A6B6F00158200 /* SQLEntity.h */; };
 		5B1F4A87192A6B6F00158200 /* SQLEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B1F4A85192A6B6F00158200 /* SQLEntity.m */; };
 		5B1F4AA4192A6E9400158200 /* SQLEntityTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B1F4AA2192A6E9400158200 /* SQLEntityTest.m */; };
@@ -29,6 +30,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5B0738F7192BBEB300AA0299 /* SQLAnnotations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SQLAnnotations.m; sourceTree = SOURCE_ROOT; };
 		5B1F4A5A192A6AAB00158200 /* libSQLModel.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSQLModel.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B1F4A84192A6B6F00158200 /* SQLEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SQLEntity.h; sourceTree = SOURCE_ROOT; };
 		5B1F4A85192A6B6F00158200 /* SQLEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SQLEntity.m; sourceTree = SOURCE_ROOT; };
@@ -87,6 +89,7 @@
 				5B1F4A84192A6B6F00158200 /* SQLEntity.h */,
 				5B1F4A85192A6B6F00158200 /* SQLEntity.m */,
 				5B1F4A88192A6CEC00158200 /* SQLAnnotations.h */,
+				5B0738F7192BBEB300AA0299 /* SQLAnnotations.m */,
 				5B1F4AAE192A8E1500158200 /* SQLAssert.h */,
 				5B1F4AB0192A914F00158200 /* SQLAssert.m */,
 				5B1F4AAA192A70B300158200 /* SQLProperty.h */,
@@ -215,6 +218,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5B1F4A87192A6B6F00158200 /* SQLEntity.m in Sources */,
+				5B0738F8192BBEB300AA0299 /* SQLAnnotations.m in Sources */,
 				5B1F4AAD192A70B300158200 /* SQLProperty.m in Sources */,
 				5B1F4AB1192A914F00158200 /* SQLAssert.m in Sources */,
 			);
@@ -258,7 +262,6 @@
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_IMPLICIT_ATOMIC_PROPERTIES = YES;
 				CLANG_WARN_OBJC_REPEATED_USE_OF_WEAK = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -286,6 +289,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-ObjC";
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				SDKROOT = macosx;
 			};
@@ -309,7 +313,6 @@
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_IMPLICIT_ATOMIC_PROPERTIES = YES;
 				CLANG_WARN_OBJC_REPEATED_USE_OF_WEAK = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -331,6 +334,7 @@
 				GCC_WARN_UNUSED_LABEL = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				OTHER_LDFLAGS = "-ObjC";
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				SDKROOT = macosx;
 			};
@@ -410,6 +414,7 @@
 				5B1F4A9E192A6E5400158200 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

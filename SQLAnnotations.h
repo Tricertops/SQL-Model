@@ -13,6 +13,7 @@
 
 
 @protocol SQL @end
+@interface NSObject (SQL) <SQL> @end
 
 #define SQLAnnotation(name, class, supers...) \
 @protocol name <SQL, ##supers> @end \
@@ -22,5 +23,13 @@ SQLAnnotation(SQLNotNil, NSObject)
 SQLAnnotation(SQLIndexed, NSObject)
 SQLAnnotation(SQLUnique, NSObject, SQLIndexed)
 SQLAnnotation(SQLPrimary, NSObject, SQLUnique, SQLNotNil)
+
+
+@interface NSObject (SQLAnnotations)
+
+- (BOOL)sql_isAnnotationProtocol;
+- (NSSet *)sql_annotations;
+
+@end
 
 
