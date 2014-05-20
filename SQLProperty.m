@@ -40,11 +40,12 @@
         
         SQLAssert(property) return nil;
         self->_property = property;
+        self->_name = @(property_getName(property));
         
-        NSDictionary *attributes = [self attributesOfProperty:self.property];
+        NSDictionary *attributes = [self attributesOfProperty:property];
         
         self->_isAtomic = ([attributes objectForKey:@"N"] == nil);
-        self->_isWritable = ([attributes objectForKey:@"R"] != nil);
+        self->_isWritable = ([attributes objectForKey:@"R"] == nil);
         self->_isWeak = ([attributes objectForKey:@"W"] != nil);
         self->_isCopy = ([attributes objectForKey:@"C"] != nil);
         self->_isStrong = ([attributes objectForKey:@"&"] != nil);
@@ -59,12 +60,11 @@
         BOOL isManaged = (self.annotations.count > 0);
         if ( ! isManaged) return nil;
         
-        self->_allowsNil = [self hasAnnotation:@protocol(SQLNotNil)];
+        self->_allowsNil = ! [self hasAnnotation:@protocol(SQLNotNil)];
         self->_isUnique = [self hasAnnotation:@protocol(SQLUnique)];
         self->_isPrimaryKey = [self hasAnnotation:@protocol(SQLPrimary)];
         self->_isIndexed = [self hasAnnotation:@protocol(SQLIndexed)];
         
-        self->_name = @(property_getName(property));
         self->_ivar = [attributes objectForKey:@"V"];
     }
     return self;
