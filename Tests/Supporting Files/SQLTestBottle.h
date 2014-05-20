@@ -15,12 +15,24 @@
 @interface SQLTestBottle : SQLEntity
 
 
-
 @property (atomic, readwrite, strong) NSUUID<SQLPrimary> *identifier;
-@property (atomic, readwrite, strong) NSString<SQLNotNil, SQLIndexed> *title;
-@property (atomic, readwrite, strong) NSString<SQL> *code;
-@property (atomic, readwrite, strong) NSData<SQLUnique> *token;
+@property (nonatomic, readonly, copy) NSString<SQL> *title;
+@property NSString<SQLNotNil, SQLIndexed> *code;
+@property (weak) id<SQLUnique> token;
 
+
+@end
+
+
+
+
+
+@interface SQLTestFlask : SQLTestBottle
+
+
+@property (nonatomic, readonly, copy) NSString<SQLIndexed> *title;
+@property (nonatomic, readonly, copy) NSString<SQLNotNil, SQLIndexed> *code;
+@property (weak) id<SQLIndexed> token;
 
 
 @end
