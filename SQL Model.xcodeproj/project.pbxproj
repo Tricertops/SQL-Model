@@ -33,7 +33,7 @@
 		5B1F4A84192A6B6F00158200 /* SQLEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SQLEntity.h; sourceTree = SOURCE_ROOT; };
 		5B1F4A85192A6B6F00158200 /* SQLEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SQLEntity.m; sourceTree = SOURCE_ROOT; };
 		5B1F4A88192A6CEC00158200 /* SQLAnnotations.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SQLAnnotations.h; sourceTree = SOURCE_ROOT; };
-		5B1F4A8D192A6E5400158200 /* SQL Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SQL Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5B1F4A8D192A6E5400158200 /* SQLTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SQLTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B1F4AA0192A6E9400158200 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5B1F4AA2192A6E9400158200 /* SQLEntityTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SQLEntityTest.m; sourceTree = "<group>"; };
 		5B1F4AA6192A6F9800158200 /* SQLTestBottle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SQLTestBottle.h; sourceTree = "<group>"; };
@@ -76,7 +76,7 @@
 			isa = PBXGroup;
 			children = (
 				5B1F4A5A192A6AAB00158200 /* libSQLModel.a */,
-				5B1F4A8D192A6E5400158200 /* SQL Tests.xctest */,
+				5B1F4A8D192A6E5400158200 /* SQLTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -163,7 +163,7 @@
 			);
 			name = "SQL Tests";
 			productName = "SQL Model Tests";
-			productReference = 5B1F4A8D192A6E5400158200 /* SQL Tests.xctest */;
+			productReference = 5B1F4A8D192A6E5400158200 /* SQLTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -364,7 +364,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = Tests/Info.plist;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = SQLTests;
 				WRAPPER_EXTENSION = xctest;
 			};
 			name = Debug;
@@ -377,7 +377,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = Tests/Info.plist;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = SQLTests;
 				WRAPPER_EXTENSION = xctest;
 			};
 			name = Release;
