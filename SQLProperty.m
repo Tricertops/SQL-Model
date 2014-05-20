@@ -14,6 +14,17 @@
 
 
 
+@interface NSString (SQLProperty)
+
+- (NSRange)sql_rangeBetweenString:(NSString *)opening andString:(NSString *)closing;
+- (NSString *)sql_substringBetweenString:(NSString *)opening andString:(NSString *)closing;
+
+@end
+
+
+
+
+
 @implementation SQLProperty
 
 
@@ -41,9 +52,9 @@
         NSString *type = [attributes objectForKey:@"T"];
         SQLAssertMessage([type hasPrefix:@(@encode(id))], @"Works only for properties of object type.") return nil;
         
-        NSArray *protocols = nil;
-        self->_valueClass = [self classFromType:type protocols:&protocols];
-        self->_annotations = [self annotationsFromProtocols:protocols];
+        NSSet *annotations = nil;
+        self->_valueClass = [self classFromType:type annotations:&annotations];
+        self->_annotations = annotations;
         
         BOOL isManaged = (self.annotations.count > 0);
         if ( ! isManaged) return nil;
@@ -74,63 +85,71 @@
 }
 
 
-- (Class)classFromType:(NSString *)type protocols:(NSArray **)protocols {
-    NSString *classString = [type substringWithRange:NSMakeRange(2, type.length - 3)]; // remove @"…"
+- (Class)classFromType:(NSString *)type annotations:(NSSet **)annotationsPtr {
+    type = [type sql_substringBetweenString:@"@\"" andString:@"\""]; // remove @"…"
     
-    NSRange protocolsBeginning = [classString rangeOfString:@"<"];
-    if (protocolsBeginning.location != NSNotFound) {
-        NSRange protocolsRange = NSMakeRange(protocolsBeginning.location + 1, classString.length - 2); // remove <…>
-        if (protocols) {
-            NSString *protocolsString = [classString substringWithRange:protocolsRange];
-            *protocols = [protocolsString componentsSeparatedByString:@","];
+    NSRange protocolsRange = [type sql_rangeBetweenString:@"<" andString:@">"]; // find <…>
+    NSString *classString = [type substringToIndex:protocolsRange.location - 1];
+    NSString *protocolsString = [type substringWithRange:protocolsRange];
+    
+    if (protocolsString.length) {
+        // Protocols are listed like: <First><Second><Third>
+        NSArray *protocolNames = [protocolsString componentsSeparatedByString:@"><"];
+        NSMutableSet *annotations = [[NSMutableSet alloc] init];
+        
+        for (NSString *protocolName in protocolNames) {
+            Protocol *protocol = NSProtocolFromString(protocolName);
+            [annotations unionSet:[(id)protocol sql_annotations]];
         }
-        classString = [classString substringToIndex:protocolsBeginning.location];
+        *annotationsPtr = annotations;
     }
     return NSClassFromString(classString);
 }
 
 
-- (NSArray *)annotationsFromProtocols:(NSArray *)inProtocols {
-    NSMutableArray *protocols = [[NSMutableArray alloc] init];
-    NSMutableArray *annotations = [[NSMutableArray alloc] init];
-    //TODO: Whitespace?
-    
-    while (protocols.count) {
-        NSString *protocolName = protocols[0];
-        [protocols removeObjectAtIndex:0];
-        
-        if ([protocolName hasPrefix:@"SQL"] && objc_getProtocol(protocolName.UTF8String)) {
-            
-            if ( ! [annotations containsObject:protocolName]) {
-                [annotations addObject:protocolName];
-            }
-            
-            NSArray *superProtocols = [self superProtocolsOfProtocol:protocolName];
-            [protocols addObjectsFromArray:superProtocols];
-        }
-    }
-    return [annotations copy];
-}
-
-
-- (NSArray *)superProtocolsOfProtocol:(NSString *)protocolName {
-    NSMutableArray *protocols = [[NSMutableArray alloc] init];
-    Protocol *protocol = objc_getProtocol(protocolName.UTF8String);
-    unsigned int count = 0;
-    Protocol * __unsafe_unretained *superProtocols = protocol_copyProtocolList(protocol, &count);
-    for (unsigned int index = 0; index < count; index++) {
-        [protocols addObject:@( protocol_getName(superProtocols[index]) )];
-    }
-    return [protocols copy];
-}
-
-
 - (BOOL)hasAnnotation:(Protocol *)annotation {
-    NSString *annotationName = @(protocol_getName(annotation));
-    return [self.annotations containsObject:annotationName];
+    SQLAssert([(id)annotation sql_isAnnotationProtocol]) return NO;
+    NSString *name = NSStringFromProtocol(annotation);
+    return [self.annotations containsObject:name];
 }
 
 
+
+
+
+@end
+
+
+
+
+
+@implementation NSString (SQLProperty)
+
+
+
+- (NSRange)sql_rangeBetweenString:(NSString *)opening andString:(NSString *)closing {
+    NSRange openingRange = [self rangeOfString:opening ?: @""];
+    if (openingRange.location == NSNotFound) {
+        return openingRange;
+    }
+    NSUInteger openingMax = NSMaxRange(openingRange);
+    NSRange closingRange = [self rangeOfString:closing ?: @""
+                                       options:NSBackwardsSearch
+                                         range:NSMakeRange(openingMax, self.length - openingMax)];
+    if (closingRange.location == NSNotFound) {
+        closingRange = NSMakeRange(self.length, 0);
+    }
+    return NSMakeRange(openingMax, closingRange.location - openingMax);
+}
+
+
+- (NSString *)sql_substringBetweenString:(NSString *)opening andString:(NSString *)closing {
+    NSRange range = [self sql_rangeBetweenString:opening andString:closing];
+    if (range.location == NSNotFound)
+        return nil;
+    else
+        return [self substringWithRange:range];
+}
 
 
 

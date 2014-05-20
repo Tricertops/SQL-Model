@@ -7,7 +7,7 @@
 //
 
 @import Foundation;
-@import ObjectiveC.message;
+@import ObjectiveC;
 
 
 
@@ -26,7 +26,7 @@
 
 @property (atomic, readonly, strong) Class valueClass;
 
-@property (atomic, readonly, strong) NSArray *annotations;
+@property (atomic, readonly, strong) NSSet *annotations;
 - (BOOL)hasAnnotation:(Protocol *)annotation;
 @property (atomic, readonly, assign) BOOL allowsNil;
 @property (atomic, readonly, assign) BOOL isUnique;
