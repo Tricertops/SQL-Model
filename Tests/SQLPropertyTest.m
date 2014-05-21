@@ -135,7 +135,7 @@
     XCTAssertTrue(title.isIndexed);
     
     XCTAssertEqualObjects(title.name, @"title");
-    XCTAssertEqualObjects(title.ivar, @"_title"); //TODO: ivar is not inherited
+    XCTAssertNil(title.ivar); //TODO: ivar is not inherited
 }
 
 
