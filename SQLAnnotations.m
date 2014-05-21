@@ -17,6 +17,8 @@
 
 
 
+
+
 - (BOOL)sql_isAnnotationProtocol {
     return ([self isKindOfClass:NSClassFromString(@"Protocol")] // Objective-C runtime class
             && [NSStringFromProtocol((Protocol *)self) hasPrefix:@"SQL"]);
@@ -24,7 +26,16 @@
 
 
 - (NSSet *)sql_annotations {
-    //TODO: Cache
+    NSSet *annotations = objc_getAssociatedObject(self, _cmd);
+    if ( ! annotations) {
+        annotations = [self sql_buildAnnotations];
+        objc_setAssociatedObject(self, _cmd, annotations, OBJC_ASSOCIATION_RETAIN);
+    }
+    return annotations;
+}
+
+
+- (NSSet *)sql_buildAnnotations {
     NSMutableSet *annotations = [[NSMutableSet alloc] init];
     
     if ([self sql_isAnnotationProtocol]) [annotations addObject:NSStringFromProtocol((Protocol *)self)]; // Includes self.
@@ -36,8 +47,10 @@
         Protocol *adopted = adoptedList[index];
         [annotations unionSet:[adopted sql_annotations]]; // Recursively up.
     }
-    return annotations;
+    return [annotations copy];
 }
+
+
 
 
 

@@ -30,6 +30,7 @@
 
 
 + (NSDictionary *)sql_buildProperties {
+    //TODO: Superclasses
     NSMutableDictionary *properties = [[NSMutableDictionary alloc] init];
     unsigned int count = 0;
     objc_property_t *underlaying = class_copyPropertyList(self, &count);
