@@ -129,7 +129,13 @@
     [d appendString:(NSStringFromClass(self.valueClass) ?: @"id")];
     [d appendFormat:@"<%@> ", [[self.annotations allObjects] componentsJoinedByString:@","]];
     if ( ! self.valueClass) [d appendString:@"*"];
-    [d appendFormat:@"%@;", self.name];
+    [d appendFormat:@"%@;  ", self.name];
+    if (self.ivar.length) {
+        [d appendFormat:@"@synthesize %@ = %@;", self.name, self.ivar];
+    }
+    else {
+        [d appendFormat:@"@dynamic %@;", self.name];
+    }
     return [d copy];
 }
 

@@ -17,6 +17,7 @@
 		5B1F4AAD192A70B300158200 /* SQLProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B1F4AAB192A70B300158200 /* SQLProperty.m */; };
 		5B1F4AAF192A8E1500158200 /* SQLAssert.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B1F4AAE192A8E1500158200 /* SQLAssert.h */; };
 		5B1F4AB1192A914F00158200 /* SQLAssert.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B1F4AB0192A914F00158200 /* SQLAssert.m */; };
+		5B52A44A192C941900495FDF /* SQLPropertyTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B52A449192C941900495FDF /* SQLPropertyTest.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		5B1F4AAB192A70B300158200 /* SQLProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SQLProperty.m; sourceTree = SOURCE_ROOT; };
 		5B1F4AAE192A8E1500158200 /* SQLAssert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SQLAssert.h; sourceTree = SOURCE_ROOT; };
 		5B1F4AB0192A914F00158200 /* SQLAssert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SQLAssert.m; sourceTree = SOURCE_ROOT; };
+		5B52A449192C941900495FDF /* SQLPropertyTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SQLPropertyTest.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +106,7 @@
 			children = (
 				5B1F4AA0192A6E9400158200 /* Info.plist */,
 				5B1F4AA2192A6E9400158200 /* SQLEntityTest.m */,
+				5B52A449192C941900495FDF /* SQLPropertyTest.m */,
 				5B1F4AA5192A6F8900158200 /* Supporting Files */,
 			);
 			path = Tests;
@@ -230,6 +233,7 @@
 			files = (
 				5B1F4AA8192A6F9800158200 /* SQLTestBottle.m in Sources */,
 				5B1F4AA4192A6E9400158200 /* SQLEntityTest.m in Sources */,
+				5B52A44A192C941900495FDF /* SQLPropertyTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

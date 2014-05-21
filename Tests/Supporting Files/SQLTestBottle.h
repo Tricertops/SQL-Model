@@ -31,8 +31,7 @@
 
 
 @property (nonatomic, readonly, copy) NSString<SQLIndexed> *title;
-@property (nonatomic, readonly, copy) NSString<SQLNotNil, SQLIndexed> *code;
-@property (weak) id<SQLIndexed> token;
+@property (copy) NSString<SQL> *info;
 
 
 @end
