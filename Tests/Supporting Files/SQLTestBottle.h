@@ -20,6 +20,10 @@
 @property NSString<SQLNotNil, SQLIndexed> *code;
 @property (weak) id<SQLUnique> token;
 
+@property NSNumber<SQL> *balance;
+@property NSNumber<SQLUnsigned> *count;
+@property NSNumber<SQLBoolean> *enabled;
+
 
 @end
 

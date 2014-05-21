@@ -115,6 +115,38 @@
 }
 
 
+- (void)test_numericAnnotations {
+    {
+        // @property NSNumber<SQL> *balance;
+        SQLProperty *balance = [[SQLTestBottle sql_properties] objectForKey:@"balance"];
+        
+        XCTAssertTrue(balance.isNumber);
+        XCTAssertFalse(balance.isBoolean);
+        XCTAssertFalse(balance.isInteger);
+        XCTAssertFalse(balance.isUnsigned);
+        XCTAssertTrue(balance.isDecimal, @"Default should be Decimal.");
+    }{
+        // @property NSNumber<SQLUnsigned> *count;
+        SQLProperty *count = [[SQLTestBottle sql_properties] objectForKey:@"count"];
+        
+        XCTAssertTrue(count.isNumber);
+        XCTAssertFalse(count.isBoolean);
+        XCTAssertTrue(count.isInteger);
+        XCTAssertTrue(count.isUnsigned);
+        XCTAssertFalse(count.isDecimal);
+    }{
+        // @property NSNumber<SQLUnsigned> *count;
+        SQLProperty *count = [[SQLTestBottle sql_properties] objectForKey:@"enabled"];
+        
+        XCTAssertTrue(count.isNumber);
+        XCTAssertTrue(count.isBoolean);
+        XCTAssertFalse(count.isInteger);
+        XCTAssertFalse(count.isUnsigned);
+        XCTAssertFalse(count.isDecimal);
+    }
+}
+
+
 - (void)test_subclassExtendsAnnotations {
     // @property (nonatomic, readonly, copy) NSString<SQLIndexed> *title;
     SQLProperty *title = [[SQLTestFlask sql_properties] objectForKey:@"title"];
