@@ -30,15 +30,17 @@
 
 
 + (NSDictionary *)sql_buildProperties {
-    //TODO: Superclasses
-    NSMutableDictionary *properties = [[NSMutableDictionary alloc] init];
+    BOOL hasEntitySuperclass = [self.superclass isSubclassOfClass:[SQLEntity class]];
+    NSDictionary *superclassProperties = (hasEntitySuperclass? [self.superclass sql_properties] : nil);
+    
+    NSMutableDictionary *properties = [NSMutableDictionary dictionaryWithDictionary:superclassProperties];
     unsigned int count = 0;
     objc_property_t *underlaying = class_copyPropertyList(self, &count);
     for (unsigned int index = 0; index < count; index++) {
         SQLProperty *property = [[SQLProperty alloc] initWithEntity:self property:underlaying[index]];
         if ( ! property)  continue;
         
-        [properties setObject:property forKey:property.name];
+        [properties setObject:property forKey:property.name]; // Overrides superclass properties.
     }
     return properties;
 }
