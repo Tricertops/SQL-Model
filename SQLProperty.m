@@ -61,9 +61,8 @@
         BOOL isManaged = (self.annotations.count > 0);
         if ( ! isManaged) return nil;
         
-        //TODO: Validate annotations: mutually exclusive numeric types, ...
-        
         [self detectNumberWithoutAnnotation];
+        [self consolidateNumericTypes];
         
         self->_ivar = [attributes objectForKey:@"V"];
     }
@@ -123,6 +122,16 @@
 }
 
 
+- (void)removeAnnotation:(Protocol *)annotation {
+    NSString *name = NSStringFromProtocol(annotation);
+    if ( ! [self.annotations containsObject:name]) return;
+    
+    NSMutableSet *mutable = [self.annotations mutableCopy];
+    [mutable removeObject:name];
+    self->_annotations = [mutable copy];
+}
+
+
 - (BOOL)detectNumberWithoutAnnotation {
     if ( ! [self.valueClass isSubclassOfClass:[NSNumber class]]) return NO;
     if (self.isNumber) return NO; // Already is number.
@@ -130,6 +139,28 @@
     //TODO: Report to client
     return YES;
 }
+
+
+- (BOOL)consolidateNumericTypes {
+    BOOL isDecimal = self.isDecimal;
+    BOOL isInteger = self.isInteger;
+    BOOL isBoolean = self.isBoolean;
+    if (isDecimal && (isInteger || isBoolean)) {
+        [self removeAnnotation:@protocol(SQLInteger)];
+        [self removeAnnotation:@protocol(SQLUnsigned)];
+        [self removeAnnotation:@protocol(SQLBoolean)];
+        //TODO: Report
+        return YES;
+    }
+    if (isInteger && isBoolean) {
+        [self removeAnnotation:@protocol(SQLBoolean)];
+        //TODO: Report
+        return YES;
+    }
+    return NO;
+}
+
+
 
 
 

@@ -148,6 +148,15 @@
         XCTAssertFalse(count.isInteger);
         XCTAssertFalse(count.isUnsigned);
         XCTAssertFalse(count.isDecimal);
+    }{
+        // @property NSNumber<SQLBoolean, SQLDecimal> *fuzzy;
+        SQLProperty *fuzzy = [[SQLTestBottle sql_properties] objectForKey:@"fuzzy"];
+        
+        XCTAssertTrue(fuzzy.isNumber);
+        XCTAssertFalse(fuzzy.isBoolean, @"Lower range is discarded.");
+        XCTAssertFalse(fuzzy.isInteger);
+        XCTAssertFalse(fuzzy.isUnsigned);
+        XCTAssertTrue(fuzzy.isDecimal, @"Higher range is preserved.");
     }
 }
 

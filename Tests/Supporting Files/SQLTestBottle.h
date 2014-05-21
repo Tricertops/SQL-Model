@@ -24,6 +24,7 @@
 @property NSNumber<SQL> *balance;
 @property NSNumber<SQLUnsigned> *count;
 @property NSNumber<SQLBoolean> *enabled;
+@property NSNumber<SQLBoolean, SQLDecimal> *fuzzy;
 
 
 @end
