@@ -24,7 +24,16 @@
 SQLAnnotation(SQLNotNil, NSObject) //!< Cannot contain nil value. You must provide default value in some way. //TODO: In what way?
 SQLAnnotation(SQLIndexed, NSObject) //!< Index table is created for annotated property.
 SQLAnnotation(SQLUnique, NSObject, SQLIndexed) //!< Value of annotated property must be unique in the entity. Implies indexing.
-SQLAnnotation(SQLPrimary, NSObject, SQLUnique, SQLNotNil) //!< Marks primary key. Implies uniqueness and the value cannot be nil (but cannot have a default value).
+SQLAnnotation(SQLPrimary, NSObject, SQLUnique, SQLNotNil) //!< Marks primary key. Implies uniqueness and the value cannot be nil (but cannot have a default value). So far only one primary key is supported. //TODO: Support multiple primary keys.
+
+//! Numeric Property Annotations
+
+SQLAnnotation(SQLNumber, NSNumber, SQL) //!< Internally used to annotate numbers. No need to use it.
+SQLAnnotation(SQLBoolean, NSNumber, SQLNumber) //!< Number backed by Boolean SQL type.
+SQLAnnotation(SQLInteger, NSNumber, SQLNumber) //!< Number backed by Integer SQL type. Signed Long by default, but can be changed by other annotations. //TODO: Annotations for length.
+SQLAnnotation(SQLUnsigned, NSNumber, SQLInteger) //!< Integer to be unsigned. Signed is the default.
+SQLAnnotation(SQLDecimal, NSNumber, SQLNumber) //!< Number backed by suitable Decimal SQL type.
+
 
 
 @interface NSObject (SQLAnnotations)
