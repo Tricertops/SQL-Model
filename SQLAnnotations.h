@@ -28,11 +28,10 @@ SQLAnnotation(SQLPrimary, NSObject, SQLUnique, SQLNotNil) //!< Marks primary key
 
 //! Numeric Property Annotations
 
-SQLAnnotation(SQLNumber, NSNumber, SQL) //!< Internally used to annotate numbers. No need to use it.
-SQLAnnotation(SQLBoolean, NSNumber, SQLNumber) //!< Number backed by Boolean SQL type.
-SQLAnnotation(SQLInteger, NSNumber, SQLNumber) //!< Number backed by Integer SQL type. Signed Long by default, but can be changed by other annotations. //TODO: Annotations for length.
+SQLAnnotation(SQLBoolean, NSNumber) //!< Number backed by Boolean SQL type.
+SQLAnnotation(SQLInteger, NSNumber) //!< Number backed by Integer SQL type. Signed Long by default, but can be changed by other annotations. //TODO: Annotations for length.
 SQLAnnotation(SQLUnsigned, NSNumber, SQLInteger) //!< Integer to be unsigned. Signed is the default.
-SQLAnnotation(SQLDecimal, NSNumber, SQLNumber) //!< Number backed by suitable Decimal SQL type.
+SQLAnnotation(SQLDecimal, NSNumber) //!< Number backed by suitable Decimal SQL type.
 
 
 

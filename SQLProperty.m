@@ -158,7 +158,7 @@
 
 
 - (BOOL)isNumber {
-    return [self hasAnnotation:@protocol(SQLNumber)];
+    return self.isBoolean || self.isInteger || self.isDecimal;
 }
 
 
