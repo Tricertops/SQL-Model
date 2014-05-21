@@ -48,67 +48,67 @@
         XCTAssertEqualObjects(identifier.ivar, @"_identifier");
     }{
         // @property (nonatomic, readonly, copy) NSString<SQL> *title;
-        SQLProperty *identifier = [[SQLTestBottle sql_properties] objectForKey:@"title"];
+        SQLProperty *title = [[SQLTestBottle sql_properties] objectForKey:@"title"];
         
-        XCTAssertEqualObjects(identifier.entityClass, [SQLTestBottle class]);
+        XCTAssertEqualObjects(title.entityClass, [SQLTestBottle class]);
         
-        XCTAssertFalse(identifier.isAtomic);
-        XCTAssertFalse(identifier.isWritable);
-        XCTAssertFalse(identifier.isWeak);
-        XCTAssertTrue(identifier.isCopy);
-        XCTAssertFalse(identifier.isStrong);
+        XCTAssertFalse(title.isAtomic);
+        XCTAssertFalse(title.isWritable);
+        XCTAssertFalse(title.isWeak);
+        XCTAssertTrue(title.isCopy);
+        XCTAssertFalse(title.isStrong);
         
-        XCTAssertEqualObjects(identifier.valueClass, [NSString class]);
+        XCTAssertEqualObjects(title.valueClass, [NSString class]);
         
-        XCTAssertTrue(identifier.allowsNil);
-        XCTAssertFalse(identifier.isUnique);
-        XCTAssertFalse(identifier.isPrimaryKey);
-        XCTAssertFalse(identifier.isIndexed);
+        XCTAssertTrue(title.allowsNil);
+        XCTAssertFalse(title.isUnique);
+        XCTAssertFalse(title.isPrimaryKey);
+        XCTAssertFalse(title.isIndexed);
         
-        XCTAssertEqualObjects(identifier.name, @"title");
-        XCTAssertEqualObjects(identifier.ivar, @"_title");
+        XCTAssertEqualObjects(title.name, @"title");
+        XCTAssertEqualObjects(title.ivar, @"_title");
     }{
         // @property NSString<SQLNotNil, SQLIndexed> *code;
-        SQLProperty *identifier = [[SQLTestBottle sql_properties] objectForKey:@"code"];
+        SQLProperty *code = [[SQLTestBottle sql_properties] objectForKey:@"code"];
         
-        XCTAssertEqualObjects(identifier.entityClass, [SQLTestBottle class]);
+        XCTAssertEqualObjects(code.entityClass, [SQLTestBottle class]);
         
-        XCTAssertTrue(identifier.isAtomic);
-        XCTAssertTrue(identifier.isWritable);
-        XCTAssertFalse(identifier.isWeak);
-        XCTAssertFalse(identifier.isCopy);
-        XCTAssertTrue(identifier.isStrong);
+        XCTAssertTrue(code.isAtomic);
+        XCTAssertTrue(code.isWritable);
+        XCTAssertFalse(code.isWeak);
+        XCTAssertFalse(code.isCopy);
+        XCTAssertTrue(code.isStrong);
         
-        XCTAssertEqualObjects(identifier.valueClass, [NSString class]);
+        XCTAssertEqualObjects(code.valueClass, [NSString class]);
         
-        XCTAssertFalse(identifier.allowsNil);
-        XCTAssertFalse(identifier.isUnique);
-        XCTAssertFalse(identifier.isPrimaryKey);
-        XCTAssertTrue(identifier.isIndexed);
+        XCTAssertFalse(code.allowsNil);
+        XCTAssertFalse(code.isUnique);
+        XCTAssertFalse(code.isPrimaryKey);
+        XCTAssertTrue(code.isIndexed);
         
-        XCTAssertEqualObjects(identifier.name, @"code");
-        XCTAssertEqualObjects(identifier.ivar, @"_code");
+        XCTAssertEqualObjects(code.name, @"code");
+        XCTAssertEqualObjects(code.ivar, @"_code");
     }{
         // @property (weak) id<SQLUnique> token;
-        SQLProperty *identifier = [[SQLTestBottle sql_properties] objectForKey:@"token"];
+        SQLProperty *token = [[SQLTestBottle sql_properties] objectForKey:@"token"];
         
-        XCTAssertEqualObjects(identifier.entityClass, [SQLTestBottle class]);
+        XCTAssertEqualObjects(token.entityClass, [SQLTestBottle class]);
         
-        XCTAssertTrue(identifier.isAtomic);
-        XCTAssertTrue(identifier.isWritable);
-        XCTAssertTrue(identifier.isWeak);
-        XCTAssertFalse(identifier.isCopy);
-        XCTAssertFalse(identifier.isStrong);
+        XCTAssertTrue(token.isAtomic);
+        XCTAssertTrue(token.isWritable);
+        XCTAssertTrue(token.isWeak);
+        XCTAssertFalse(token.isCopy);
+        XCTAssertFalse(token.isStrong);
         
-        XCTAssertNil(identifier.valueClass);
+        XCTAssertNil(token.valueClass);
         
-        XCTAssertTrue(identifier.allowsNil);
-        XCTAssertTrue(identifier.isUnique);
-        XCTAssertFalse(identifier.isPrimaryKey);
-        XCTAssertTrue(identifier.isIndexed);
+        XCTAssertTrue(token.allowsNil);
+        XCTAssertTrue(token.isUnique);
+        XCTAssertFalse(token.isPrimaryKey);
+        XCTAssertTrue(token.isIndexed);
         
-        XCTAssertEqualObjects(identifier.name, @"token");
-        XCTAssertEqualObjects(identifier.ivar, @"_token");
+        XCTAssertEqualObjects(token.name, @"token");
+        XCTAssertEqualObjects(token.ivar, @"_token");
     }
 }
 
