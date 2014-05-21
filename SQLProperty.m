@@ -117,6 +117,26 @@
 
 
 
+- (NSString *)description {
+    NSMutableString *d = [[NSMutableString alloc] init];
+    [d appendString:@"@property ("];
+    [d appendFormat:@"%@, ", (self.isAtomic? @"atomic" : @"nonatomic")];
+    [d appendFormat:@"%@, ", (self.isWritable? @"readwrite" : @"readonly")];
+    [d appendFormat:@"%@) ", (self.isWeak? @"weak"
+                              : (self.isCopy? @"copy"
+                                 : (self.isStrong? @"strong"
+                                    : @"unsafe_unretained")))];
+    [d appendString:(NSStringFromClass(self.valueClass) ?: @"id")];
+    [d appendFormat:@"<%@> ", [[self.annotations allObjects] componentsJoinedByString:@","]];
+    if ( ! self.valueClass) [d appendString:@"*"];
+    [d appendFormat:@"%@;", self.name];
+    return [d copy];
+}
+
+
+
+
+
 @end
 
 
