@@ -29,9 +29,15 @@
 @property (atomic, readonly, strong) NSSet *annotations;
 - (BOOL)hasAnnotation:(Protocol *)annotation;
 @property (atomic, readonly, assign) BOOL allowsNil;
+@property (atomic, readonly, assign) BOOL isIndexed;
 @property (atomic, readonly, assign) BOOL isUnique;
 @property (atomic, readonly, assign) BOOL isPrimaryKey;
-@property (atomic, readonly, assign) BOOL isIndexed;
+
+@property (atomic, readonly, assign) BOOL isNumber;
+@property (atomic, readonly, assign) BOOL isBoolean;
+@property (atomic, readonly, assign) BOOL isInteger;
+@property (atomic, readonly, assign) BOOL isUnsigned;
+@property (atomic, readonly, assign) BOOL isDecimal;
 
 @property (atomic, readonly, copy) NSString *name;
 @property (atomic, readonly, copy) NSString *ivar;

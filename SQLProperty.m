@@ -60,10 +60,7 @@
         BOOL isManaged = (self.annotations.count > 0);
         if ( ! isManaged) return nil;
         
-        self->_allowsNil = ! [self hasAnnotation:@protocol(SQLNotNil)];
-        self->_isUnique = [self hasAnnotation:@protocol(SQLUnique)];
-        self->_isPrimaryKey = [self hasAnnotation:@protocol(SQLPrimary)];
-        self->_isIndexed = [self hasAnnotation:@protocol(SQLIndexed)];
+        //TODO: Validate annotations: mutually exclusive numeric types, NSNumber detection, ...
         
         self->_ivar = [attributes objectForKey:@"V"];
     }
@@ -138,6 +135,54 @@
     }
     return [d copy];
 }
+
+
+- (BOOL)allowsNil {
+    return ! [self hasAnnotation:@protocol(SQLNotNil)];
+}
+
+
+- (BOOL)isIndexed {
+    return [self hasAnnotation:@protocol(SQLIndexed)];
+}
+
+
+- (BOOL)isUnique {
+    return [self hasAnnotation:@protocol(SQLUnique)];
+}
+
+
+- (BOOL)isPrimaryKey {
+    return [self hasAnnotation:@protocol(SQLPrimary)];
+}
+
+
+- (BOOL)isNumber {
+    return [self hasAnnotation:@protocol(SQLNumber)];
+}
+
+
+- (BOOL)isBoolean {
+    return [self hasAnnotation:@protocol(SQLBoolean)];
+}
+
+
+- (BOOL)isInteger {
+    return [self hasAnnotation:@protocol(SQLInteger)];
+}
+
+
+- (BOOL)isUnsigned {
+    return [self hasAnnotation:@protocol(SQLUnsigned)];
+}
+
+
+- (BOOL)isDecimal {
+    return [self hasAnnotation:@protocol(SQLDecimal)];
+}
+
+
+
 
 
 
