@@ -115,6 +115,42 @@
 }
 
 
+- (void)test_subclassExtendsAnnotations {
+    // @property (nonatomic, readonly, copy) NSString<SQLIndexed> *title;
+    SQLProperty *title = [[SQLTestFlask sql_properties] objectForKey:@"title"];
+    
+    XCTAssertEqualObjects(title.entityClass, [SQLTestFlask class]);
+    
+    XCTAssertFalse(title.isAtomic);
+    XCTAssertFalse(title.isWritable);
+    XCTAssertFalse(title.isWeak);
+    XCTAssertTrue(title.isCopy);
+    XCTAssertFalse(title.isStrong);
+    
+    XCTAssertEqualObjects(title.valueClass, [NSString class]);
+    
+    XCTAssertTrue(title.allowsNil);
+    XCTAssertFalse(title.isUnique);
+    XCTAssertFalse(title.isPrimaryKey);
+    XCTAssertTrue(title.isIndexed);
+    
+    XCTAssertEqualObjects(title.name, @"title");
+    XCTAssertEqualObjects(title.ivar, @"_title"); //TODO: ivar is not inherited
+}
+
+
+- (void)test_inherited {
+    NSDictionary *properties = [SQLTestFlask sql_properties];
+    //TODO: properties not collected from superclasses
+    XCTAssertNotNil(properties[@"identifier"]);
+    XCTAssertNotNil(properties[@"title"]);
+    XCTAssertNotNil(properties[@"code"]);
+    XCTAssertNotNil(properties[@"token"]);
+    XCTAssertNotNil(properties[@"info"]);
+}
+
+
+
 
 
 
