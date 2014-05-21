@@ -26,7 +26,12 @@
 
 
 
-- (void)test_loading {
+- (void)test_notAnnotatedProperty {
+    XCTAssertNil([[SQLTestBottle sql_properties] objectForKey:@"nothing"]);
+}
+
+
+- (void)test_generalAnnotationsAndAttributes {
     {
         // @property (atomic, readwrite, strong) NSUUID<SQLPrimary> *identifier;
         SQLProperty *identifier = [[SQLTestBottle sql_properties] objectForKey:@"identifier"];

@@ -52,6 +52,7 @@
         
         NSString *type = [attributes objectForKey:@"T"];
         SQLAssertMessage([type hasPrefix:@(@encode(id))], @"Works only for properties of object type.") return nil;
+        //TODO: Primitive numeric types to treat as numbers that dont allow nils.
         
         NSSet *annotations = nil;
         self->_valueClass = [self classFromType:type annotations:&annotations];
@@ -86,8 +87,12 @@
     type = [type sql_substringBetweenString:@"@\"" andString:@"\""]; // remove @"…"
     
     NSRange protocolsRange = [type sql_rangeBetweenString:@"<" andString:@">"]; // find <…>
-    NSString *classString = [type substringToIndex:protocolsRange.location - 1];
-    NSString *protocolsString = [type substringWithRange:protocolsRange];
+    BOOL noProtocols = (protocolsRange.location == NSNotFound);
+    NSInteger classEnd = (noProtocols || protocolsRange.location < 1
+                          ? type.length
+                          : protocolsRange.location - 1);
+    NSString *classString = [type substringToIndex:classEnd];
+    NSString *protocolsString = (noProtocols? nil : [type substringWithRange:protocolsRange]);
     
     if (protocolsString.length) {
         // Protocols are listed like: <First><Second><Third>

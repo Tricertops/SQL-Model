@@ -15,6 +15,7 @@
 @interface SQLTestBottle : SQLEntity
 
 
+@property NSString *nothing;
 @property (atomic, readwrite, strong) NSUUID<SQLPrimary> *identifier;
 @property (nonatomic, readonly, copy) NSString<SQL> *title;
 @property NSString<SQLNotNil, SQLIndexed> *code;
