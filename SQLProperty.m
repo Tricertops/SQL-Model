@@ -52,7 +52,6 @@
         
         NSString *type = [attributes objectForKey:@"T"];
         SQLAssertMessage([type hasPrefix:@(@encode(id))], @"Works only for properties of object type.") return nil;
-        //TODO: Primitive numeric types to treat as numbers that dont allow nils.
         
         NSSet *annotations = nil;
         self->_valueClass = [self classFromType:type annotations:&annotations];
@@ -149,12 +148,12 @@
         [self removeAnnotation:@protocol(SQLInteger)];
         [self removeAnnotation:@protocol(SQLUnsigned)];
         [self removeAnnotation:@protocol(SQLBoolean)];
-        //TODO: Report
+        //TODO: Report to client
         return YES;
     }
     if (isInteger && isBoolean) {
         [self removeAnnotation:@protocol(SQLBoolean)];
-        //TODO: Report
+        //TODO: Report to client
         return YES;
     }
     return NO;
