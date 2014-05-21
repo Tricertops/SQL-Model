@@ -16,31 +16,31 @@
 @interface SQLProperty : NSObject
 
 
-@property (atomic, readonly, strong) Class entityClass;
+@property (readonly) Class entityClass;
 
-@property (atomic, readonly, assign) BOOL isAtomic;
-@property (atomic, readonly, assign) BOOL isWritable;
-@property (atomic, readonly, assign) BOOL isWeak;
-@property (atomic, readonly, assign) BOOL isCopy;
-@property (atomic, readonly, assign) BOOL isStrong;
+@property (readonly) BOOL isAtomic;
+@property (readonly) BOOL isWritable;
+@property (readonly) BOOL isWeak;
+@property (readonly) BOOL isCopy;
+@property (readonly) BOOL isStrong;
 
-@property (atomic, readonly, strong) Class valueClass;
+@property (readonly) Class valueClass;
 
-@property (atomic, readonly, strong) NSSet *annotations;
+@property (readonly, copy) NSSet *annotations;
 - (BOOL)hasAnnotation:(Protocol *)annotation;
-@property (atomic, readonly, assign) BOOL allowsNil;
-@property (atomic, readonly, assign) BOOL isIndexed;
-@property (atomic, readonly, assign) BOOL isUnique;
-@property (atomic, readonly, assign) BOOL isPrimaryKey;
+@property (readonly) BOOL allowsNil;
+@property (readonly) BOOL isIndexed;
+@property (readonly) BOOL isUnique;
+@property (readonly) BOOL isPrimaryKey;
 
-@property (atomic, readonly, assign) BOOL isNumber;
-@property (atomic, readonly, assign) BOOL isBoolean;
-@property (atomic, readonly, assign) BOOL isInteger;
-@property (atomic, readonly, assign) BOOL isUnsigned;
-@property (atomic, readonly, assign) BOOL isDecimal;
+@property (readonly) BOOL isNumber;
+@property (readonly) BOOL isBoolean;
+@property (readonly) BOOL isInteger;
+@property (readonly) BOOL isUnsigned;
+@property (readonly) BOOL isDecimal;
 
-@property (atomic, readonly, copy) NSString *name;
-@property (atomic, readonly, copy) NSString *ivar;
+@property (readonly, copy) NSString *name;
+@property (readonly, copy) NSString *ivar;
 
 
 @end
@@ -53,7 +53,7 @@
 
 
 - (instancetype)initWithEntity:(Class)class property:(objc_property_t)property;
-@property (atomic, readonly, assign) objc_property_t property;
+@property (readonly) objc_property_t property;
 
 
 @end
