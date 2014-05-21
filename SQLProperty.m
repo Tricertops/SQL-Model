@@ -61,7 +61,9 @@
         BOOL isManaged = (self.annotations.count > 0);
         if ( ! isManaged) return nil;
         
-        //TODO: Validate annotations: mutually exclusive numeric types, NSNumber detection, ...
+        //TODO: Validate annotations: mutually exclusive numeric types, ...
+        
+        [self detectNumberWithoutAnnotation];
         
         self->_ivar = [attributes objectForKey:@"V"];
     }
@@ -116,6 +118,18 @@
 }
 
 
+- (void)addAnnotation:(Protocol *)annotation {
+    self->_annotations = [self.annotations setByAddingObject:NSStringFromProtocol(annotation)];
+}
+
+
+- (BOOL)detectNumberWithoutAnnotation {
+    if ( ! [self.valueClass isSubclassOfClass:[NSNumber class]]) return NO;
+    if (self.isNumber) return NO; // Already is number.
+    [self addAnnotation:@protocol(SQLDecimal)];
+    //TODO: Report to client
+    return YES;
+}
 
 
 

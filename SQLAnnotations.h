@@ -31,7 +31,7 @@ SQLAnnotation(SQLPrimary, NSObject, SQLUnique, SQLNotNil) //!< Marks primary key
 SQLAnnotation(SQLBoolean, NSNumber) //!< Number backed by Boolean SQL type.
 SQLAnnotation(SQLInteger, NSNumber) //!< Number backed by Integer SQL type. Signed Long by default, but can be changed by other annotations. //TODO: Annotations for length.
 SQLAnnotation(SQLUnsigned, NSNumber, SQLInteger) //!< Integer to be unsigned. Signed is the default.
-SQLAnnotation(SQLDecimal, NSNumber) //!< Number backed by suitable Decimal SQL type.
+SQLAnnotation(SQLDecimal, NSNumber) //!< Number backed by suitable Decimal SQL type. This is the default for NSNumbers.
 
 
 
