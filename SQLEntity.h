@@ -20,6 +20,7 @@
 
 
 + (NSDictionary *)sql_properties;
++ (id)sql_associatedObjectForKey:(void *)key withCreation:(id(^)(void))block;
 
 
 @end

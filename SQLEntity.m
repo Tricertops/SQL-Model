@@ -37,29 +37,31 @@
 
 
 + (NSDictionary *)sql_properties {
-    NSDictionary *properties = objc_getAssociatedObject(self, _cmd);
-    if ( ! properties) {
-        properties = [self sql_buildProperties];
-        objc_setAssociatedObject(self, _cmd, properties, OBJC_ASSOCIATION_RETAIN);
-    }
-    return properties;
+    return [self sql_associatedObjectForKey:_cmd withCreation:^id{
+        BOOL hasEntitySuperclass = [self.superclass isSubclassOfClass:[SQLEntity class]];
+        NSDictionary *superclassProperties = (hasEntitySuperclass? [self.superclass sql_properties] : nil);
+        
+        NSMutableDictionary *properties = [NSMutableDictionary dictionaryWithDictionary:superclassProperties];
+        unsigned int count = 0;
+        objc_property_t *underlaying = class_copyPropertyList(self, &count);
+        for (unsigned int index = 0; index < count; index++) {
+            SQLProperty *property = [[SQLProperty alloc] initWithEntity:self property:underlaying[index]];
+            if ( ! property)  continue;
+            
+            [properties setObject:property forKey:property.name]; // Overrides superclass properties.
+        }
+        return properties;
+    }];
 }
 
 
-+ (NSDictionary *)sql_buildProperties {
-    BOOL hasEntitySuperclass = [self.superclass isSubclassOfClass:[SQLEntity class]];
-    NSDictionary *superclassProperties = (hasEntitySuperclass? [self.superclass sql_properties] : nil);
-    
-    NSMutableDictionary *properties = [NSMutableDictionary dictionaryWithDictionary:superclassProperties];
-    unsigned int count = 0;
-    objc_property_t *underlaying = class_copyPropertyList(self, &count);
-    for (unsigned int index = 0; index < count; index++) {
-        SQLProperty *property = [[SQLProperty alloc] initWithEntity:self property:underlaying[index]];
-        if ( ! property)  continue;
-        
-        [properties setObject:property forKey:property.name]; // Overrides superclass properties.
++ (id)sql_associatedObjectForKey:(void *)key withCreation:(id(^)(void))block {
+    id object = objc_getAssociatedObject(self, key);
+    if ( ! object) {
+        object = block();
+        objc_setAssociatedObject(self, key, object, OBJC_ASSOCIATION_RETAIN);
     }
-    return properties;
+    return object;
 }
 
 
