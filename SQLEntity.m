@@ -19,6 +19,32 @@
 
 
 
++ (NSString *)tableName {
+    NSString *instance = [self instanceName];
+    NSDictionary *exceptions = @{
+                                 @"person": @"people",
+                                 @"child": @"children",
+                                 };
+    // goodPerson –> goodPeople
+    // badChild –> badChildren
+    for (NSString *suffix in exceptions) {
+        NSRange range = [instance rangeOfString:suffix options:(NSBackwardsSearch | NSAnchoredSearch | NSCaseInsensitiveSearch)];
+        if (range.location != NSNotFound) {
+            NSString *replacement = [exceptions objectForKey:suffix];
+            NSUInteger replaceIndex = range.location + 1;
+            NSRange replacemrntRange = NSMakeRange(replaceIndex, instance.length - replaceIndex);
+            return [instance stringByReplacingCharactersInRange:replacemrntRange withString:[replacement substringFromIndex:1]];
+        }
+    }
+    
+    if ([instance hasSuffix:@"s"] || [instance hasSuffix:@"x"]) {
+        return [instance stringByAppendingString:@"es"];
+    }
+    
+    return [instance stringByAppendingString:@"s"];
+}
+
+
 + (NSString *)instanceName {
     NSScanner *scanner = [NSScanner scannerWithString:NSStringFromClass(self)];
     scanner.caseSensitive = YES;

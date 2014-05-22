@@ -17,6 +17,7 @@
 
 
 + (NSString *)instanceName;
++ (NSString *)tableName;
 
 
 + (NSDictionary *)sql_properties;
