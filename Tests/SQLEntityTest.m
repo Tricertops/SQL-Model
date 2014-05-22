@@ -21,6 +21,16 @@
 
 @implementation SQLEntityTest
 
+
+
+
+- (void)test_automagicInstanceName {
+    XCTAssertEqualObjects([SQLTestBottle instanceName], @"testBottle");
+    XCTAssertEqualObjects([SQLTestFlask instanceName], @"testFlask");
+}
+
+
+
 @end
 
 

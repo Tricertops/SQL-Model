@@ -16,6 +16,9 @@
 @interface SQLEntity : NSObject
 
 
++ (NSString *)instanceName;
+
+
 + (NSDictionary *)sql_properties;
 
 

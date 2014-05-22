@@ -19,6 +19,23 @@
 
 
 
++ (NSString *)instanceName {
+    NSScanner *scanner = [NSScanner scannerWithString:NSStringFromClass(self)];
+    scanner.caseSensitive = YES;
+    scanner.charactersToBeSkipped = nil;
+    NSString *prefix = nil;
+    [scanner scanCharactersFromSet:[NSCharacterSet uppercaseLetterCharacterSet] intoString:&prefix];
+    if ( ! prefix.length) return scanner.string; // Maybe begins with lowercase
+    
+    NSString *firstLetter = [prefix substringFromIndex:prefix.length - 1];
+    NSString *remainder = [scanner.string substringFromIndex:scanner.scanLocation];
+    return [NSString stringWithFormat:@"%@%@", [firstLetter lowercaseString], remainder];
+}
+
+
+
+
+
 + (NSDictionary *)sql_properties {
     NSDictionary *properties = objc_getAssociatedObject(self, _cmd);
     if ( ! properties) {
