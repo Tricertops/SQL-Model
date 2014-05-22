@@ -20,13 +20,42 @@
 
 
 + (NSString *)tableName {
-    NSString *instance = [self instanceName];
+    return [self sql_associatedObjectForKey:_cmd withCreation:^id{
+        return [self sql_tableNameFromInstanceName:[self instanceName]];
+    }];
+}
+
+
++ (NSString *)instanceName {
+    return [self sql_associatedObjectForKey:_cmd withCreation:^id{
+        return [self sql_instanceNameFromClassName:NSStringFromClass(self)];
+    }];
+}
+
+
+
+
+
++ (NSString *)sql_instanceNameFromClassName:(NSString *)class {
+    NSScanner *scanner = [NSScanner scannerWithString:class];
+    scanner.caseSensitive = YES;
+    scanner.charactersToBeSkipped = nil;
+    NSString *prefix = nil;
+    [scanner scanCharactersFromSet:[NSCharacterSet uppercaseLetterCharacterSet] intoString:&prefix];
+    if ( ! prefix.length) return scanner.string; // Maybe begins with lowercase
+    
+    NSString *firstLetter = [prefix substringFromIndex:prefix.length - 1];
+    NSString *remainder = [scanner.string substringFromIndex:scanner.scanLocation];
+    return [NSString stringWithFormat:@"%@%@", [firstLetter lowercaseString], remainder];
+}
+
+
++ (NSString *)sql_tableNameFromInstanceName:(NSString *)instance {
     NSDictionary *exceptions = @{
                                  @"person": @"people",
                                  @"child": @"children",
+                                 //TODO: More irregular nouns
                                  };
-    // goodPerson –> goodPeople
-    // badChild –> badChildren
     for (NSString *suffix in exceptions) {
         NSRange range = [instance rangeOfString:suffix options:(NSBackwardsSearch | NSAnchoredSearch | NSCaseInsensitiveSearch)];
         if (range.location != NSNotFound) {
@@ -43,23 +72,6 @@
     
     return [instance stringByAppendingString:@"s"];
 }
-
-
-+ (NSString *)instanceName {
-    NSScanner *scanner = [NSScanner scannerWithString:NSStringFromClass(self)];
-    scanner.caseSensitive = YES;
-    scanner.charactersToBeSkipped = nil;
-    NSString *prefix = nil;
-    [scanner scanCharactersFromSet:[NSCharacterSet uppercaseLetterCharacterSet] intoString:&prefix];
-    if ( ! prefix.length) return scanner.string; // Maybe begins with lowercase
-    
-    NSString *firstLetter = [prefix substringFromIndex:prefix.length - 1];
-    NSString *remainder = [scanner.string substringFromIndex:scanner.scanLocation];
-    return [NSString stringWithFormat:@"%@%@", [firstLetter lowercaseString], remainder];
-}
-
-
-
 
 
 + (NSDictionary *)sql_properties {

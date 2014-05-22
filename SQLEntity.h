@@ -20,6 +20,8 @@
 + (NSString *)tableName;
 
 
++ (NSString *)sql_instanceNameFromClassName:(NSString *)className;
++ (NSString *)sql_tableNameFromInstanceName:(NSString *)className;
 + (NSDictionary *)sql_properties;
 + (id)sql_associatedObjectForKey:(void *)key withCreation:(id(^)(void))block;
 
