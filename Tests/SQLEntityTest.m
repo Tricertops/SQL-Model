@@ -33,10 +33,22 @@
 
 
 - (void)test_automagicTableName {
+    // -s
     XCTAssertEqualObjects([SQLTestBottle tableName], @"testBottles");
     XCTAssertEqualObjects([SQLTestFlask tableName], @"testFlasks");
+    
+    // -es
     XCTAssertEqualObjects([SQLEntity sql_tableNameFromInstanceName:@"box"], @"boxes");
     XCTAssertEqualObjects([SQLEntity sql_tableNameFromInstanceName:@"clearGlass"], @"clearGlasses");
+    XCTAssertEqualObjects([SQLEntity sql_tableNameFromInstanceName:@"witch"], @"witches");
+    
+    // -ies
+    XCTAssertEqualObjects([SQLEntity sql_tableNameFromInstanceName:@"boy"], @"boys");
+    XCTAssertEqualObjects([SQLEntity sql_tableNameFromInstanceName:@"day"], @"days");
+    XCTAssertEqualObjects([SQLEntity sql_tableNameFromInstanceName:@"berry"], @"berries");
+    XCTAssertEqualObjects([SQLEntity sql_tableNameFromInstanceName:@"baby"], @"babies");
+    
+    // <irregular>
     XCTAssertEqualObjects([SQLEntity sql_tableNameFromInstanceName:@"badChild"], @"badChildren");
     XCTAssertEqualObjects([SQLEntity sql_tableNameFromInstanceName:@"goodPerson"], @"goodPeople");
     XCTAssertEqualObjects([SQLEntity sql_tableNameFromInstanceName:@"fish"], @"fish");

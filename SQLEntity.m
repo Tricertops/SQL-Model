@@ -76,7 +76,24 @@
         }
     }
     
-    if ([instance hasSuffix:@"s"] || [instance hasSuffix:@"x"]) {
+    if ([instance hasSuffix:@"y"]) {
+        BOOL yWithVowel = ([instance hasSuffix:@"ay"]
+                           || [instance hasSuffix:@"ey"]
+                           || [instance hasSuffix:@"iy"]
+                           || [instance hasSuffix:@"oy"]
+                           || [instance hasSuffix:@"uy"]);
+        if ( ! yWithVowel) {
+            // y with consonant
+            NSRange yRange = NSMakeRange(instance.length - 1, 1);
+            return [instance stringByReplacingCharactersInRange:yRange withString:@"ies"];
+        }
+    }
+    
+    if ([instance hasSuffix:@"ch"]
+        || [instance hasSuffix:@"s"]
+        || [instance hasSuffix:@"sh"]
+        || [instance hasSuffix:@"x"]
+        || [instance hasSuffix:@"z"]) {
         return [instance stringByAppendingString:@"es"];
     }
     
