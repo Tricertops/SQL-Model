@@ -48,6 +48,10 @@
     XCTAssertEqualObjects([SQLEntity sql_tableNameFromInstanceName:@"berry"], @"berries");
     XCTAssertEqualObjects([SQLEntity sql_tableNameFromInstanceName:@"baby"], @"babies");
     
+    // -ves
+    XCTAssertEqualObjects([SQLEntity sql_tableNameFromInstanceName:@"knife"], @"knives");
+    XCTAssertEqualObjects([SQLEntity sql_tableNameFromInstanceName:@"half"], @"halves");
+    
     // <irregular>
     XCTAssertEqualObjects([SQLEntity sql_tableNameFromInstanceName:@"badChild"], @"badChildren");
     XCTAssertEqualObjects([SQLEntity sql_tableNameFromInstanceName:@"goodPerson"], @"goodPeople");

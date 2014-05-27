@@ -51,6 +51,8 @@
 
 
 + (NSString *)sql_tableNameFromInstanceName:(NSString *)instance {
+    //! This method uses English rules to derive plural form of the input noun to be used as a table name.
+    
     // These pairs must begin with the same letter!
     NSDictionary *exceptions = @{
                                  @"fish": @"",
@@ -60,7 +62,7 @@
                                  @"tooth": @"teeth",
                                  @"goose": @"geese",
                                  @"child": @"children",
-                                 @"man": @"men", // also works for derivatived, like woman or fireman
+                                 @"man": @"men", // also works for derivates, like ‘woman’ or ‘fireman’
                                  @"person": @"people",
                                  @"mouse": @"mice",
                                  };
@@ -89,12 +91,24 @@
         }
     }
     
-    if ([instance hasSuffix:@"ch"]
+    if ([instance hasSuffix:@"ch"] // Exception: If the -ch is pronounced as a ‘k’, we should add -s rather than -es.
         || [instance hasSuffix:@"s"]
         || [instance hasSuffix:@"sh"]
         || [instance hasSuffix:@"x"]
         || [instance hasSuffix:@"z"]) {
+        // Exception: There are nouns ending with -o that should always use -es.
         return [instance stringByAppendingString:@"es"];
+    }
+    
+    if ([instance hasSuffix:@"f"]) {
+        // Exception: Nouns ending with two vowels plus -f usually appends just an -s.
+        NSRange fRange = NSMakeRange(instance.length - 1, 1);
+        return [instance stringByReplacingCharactersInRange:fRange withString:@"ves"];
+    }
+    
+    if ([instance hasSuffix:@"fe"]) {
+        NSRange feRange = NSMakeRange(instance.length - 2, 2);
+        return [instance stringByReplacingCharactersInRange:feRange withString:@"ves"];
     }
     
     return [instance stringByAppendingString:@"s"];
