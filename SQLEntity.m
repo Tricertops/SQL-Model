@@ -51,15 +51,25 @@
 
 
 + (NSString *)sql_tableNameFromInstanceName:(NSString *)instance {
+    // These pairs must begin with the same letter!
     NSDictionary *exceptions = @{
-                                 @"person": @"people",
+                                 @"fish": @"",
+                                 @"sheep": @"",
+                                 @"barracks": @"",
+                                 @"foot": @"feet",
+                                 @"tooth": @"teeth",
+                                 @"goose": @"geese",
                                  @"child": @"children",
-                                 //TODO: More irregular nouns
+                                 @"man": @"men", // also works for derivatived, like woman or fireman
+                                 @"person": @"people",
+                                 @"mouse": @"mice",
                                  };
     for (NSString *suffix in exceptions) {
         NSRange range = [instance rangeOfString:suffix options:(NSBackwardsSearch | NSAnchoredSearch | NSCaseInsensitiveSearch)];
         if (range.location != NSNotFound) {
             NSString *replacement = [exceptions objectForKey:suffix];
+            if ( ! replacement.length) return instance; // without plural form
+            
             NSUInteger replaceIndex = range.location + 1;
             NSRange replacemrntRange = NSMakeRange(replaceIndex, instance.length - replaceIndex);
             return [instance stringByReplacingCharactersInRange:replacemrntRange withString:[replacement substringFromIndex:1]];

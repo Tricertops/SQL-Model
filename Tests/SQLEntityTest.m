@@ -39,6 +39,9 @@
     XCTAssertEqualObjects([SQLEntity sql_tableNameFromInstanceName:@"clearGlass"], @"clearGlasses");
     XCTAssertEqualObjects([SQLEntity sql_tableNameFromInstanceName:@"badChild"], @"badChildren");
     XCTAssertEqualObjects([SQLEntity sql_tableNameFromInstanceName:@"goodPerson"], @"goodPeople");
+    XCTAssertEqualObjects([SQLEntity sql_tableNameFromInstanceName:@"fish"], @"fish");
+    XCTAssertEqualObjects([SQLEntity sql_tableNameFromInstanceName:@"woman"], @"women");
+    XCTAssertEqualObjects([SQLEntity sql_tableNameFromInstanceName:@"barracks"], @"barracks");
 }
 
 
