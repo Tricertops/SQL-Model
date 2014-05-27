@@ -36,6 +36,25 @@
 
 
 
+- (instancetype)initWithPrimaryKey:(id)primaryKey {
+    self = [super init];
+    if (self) {
+        SQLProperty *primaryProperty = [self.class sql_primaryProperty];
+        [self setValue:primaryKey forKey:primaryProperty.name];
+    }
+    return self;
+}
+
+
+- (id)primaryKey {
+    SQLProperty *primaryProperty = [self.class sql_primaryProperty];
+    return [self valueForKey:primaryProperty.name];
+}
+
+
+
+
+
 + (NSString *)sql_instanceNameFromClassName:(NSString *)class {
     NSScanner *scanner = [NSScanner scannerWithString:class];
     scanner.caseSensitive = YES;
@@ -130,6 +149,16 @@
             [properties setObject:property forKey:property.name]; // Overrides superclass properties.
         }
         return properties;
+    }];
+}
+
+
++ (SQLProperty *)sql_primaryProperty {
+    return [self.class sql_associatedObjectForKey:_cmd withCreation:^id{
+        for (SQLProperty *property in [self.class sql_properties]) {
+            if (property.isPrimaryKey) return property;
+        }
+        return nil;
     }];
 }
 

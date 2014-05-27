@@ -19,6 +19,10 @@
 + (NSString *)instanceName;
 + (NSString *)tableName;
 
+- (instancetype)initWithPrimaryKey:(id)primaryKey;
+@property (readonly) id primaryKey;
+
+
 
 + (NSString *)sql_instanceNameFromClassName:(NSString *)className;
 + (NSString *)sql_tableNameFromInstanceName:(NSString *)className;
