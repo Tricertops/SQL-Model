@@ -33,31 +33,35 @@
 
 
 - (void)test_automagicTableName {
+    NSString *(^plural)(NSString *) = ^(NSString *singular) {
+        return [SQLEntity sql_tableNameFromInstanceName:singular];
+    };
+    
     // -s
     XCTAssertEqualObjects([SQLTestBottle tableName], @"testBottles");
     XCTAssertEqualObjects([SQLTestFlask tableName], @"testFlasks");
     
     // -es
-    XCTAssertEqualObjects([SQLEntity sql_tableNameFromInstanceName:@"box"], @"boxes");
-    XCTAssertEqualObjects([SQLEntity sql_tableNameFromInstanceName:@"clearGlass"], @"clearGlasses");
-    XCTAssertEqualObjects([SQLEntity sql_tableNameFromInstanceName:@"witch"], @"witches");
+    XCTAssertEqualObjects(plural(@"box"), @"boxes");
+    XCTAssertEqualObjects(plural(@"clearGlass"), @"clearGlasses");
+    XCTAssertEqualObjects(plural(@"witch"), @"witches");
     
     // -ies
-    XCTAssertEqualObjects([SQLEntity sql_tableNameFromInstanceName:@"boy"], @"boys");
-    XCTAssertEqualObjects([SQLEntity sql_tableNameFromInstanceName:@"day"], @"days");
-    XCTAssertEqualObjects([SQLEntity sql_tableNameFromInstanceName:@"berry"], @"berries");
-    XCTAssertEqualObjects([SQLEntity sql_tableNameFromInstanceName:@"baby"], @"babies");
+    XCTAssertEqualObjects(plural(@"boy"), @"boys");
+    XCTAssertEqualObjects(plural(@"day"), @"days");
+    XCTAssertEqualObjects(plural(@"berry"), @"berries");
+    XCTAssertEqualObjects(plural(@"baby"), @"babies");
     
     // -ves
-    XCTAssertEqualObjects([SQLEntity sql_tableNameFromInstanceName:@"knife"], @"knives");
-    XCTAssertEqualObjects([SQLEntity sql_tableNameFromInstanceName:@"half"], @"halves");
+    XCTAssertEqualObjects(plural(@"knife"), @"knives");
+    XCTAssertEqualObjects(plural(@"half"), @"halves");
     
     // <irregular>
-    XCTAssertEqualObjects([SQLEntity sql_tableNameFromInstanceName:@"badChild"], @"badChildren");
-    XCTAssertEqualObjects([SQLEntity sql_tableNameFromInstanceName:@"goodPerson"], @"goodPeople");
-    XCTAssertEqualObjects([SQLEntity sql_tableNameFromInstanceName:@"fish"], @"fish");
-    XCTAssertEqualObjects([SQLEntity sql_tableNameFromInstanceName:@"woman"], @"women");
-    XCTAssertEqualObjects([SQLEntity sql_tableNameFromInstanceName:@"barracks"], @"barracks");
+    XCTAssertEqualObjects(plural(@"badChild"), @"badChildren");
+    XCTAssertEqualObjects(plural(@"goodPerson"), @"goodPeople");
+    XCTAssertEqualObjects(plural(@"fish"), @"fish");
+    XCTAssertEqualObjects(plural(@"woman"), @"women");
+    XCTAssertEqualObjects(plural(@"barracks"), @"barracks");
 }
 
 
