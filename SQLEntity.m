@@ -55,6 +55,67 @@
 
 
 
++ (instancetype)insert:(id)primaryKey {
+    SQLEntity *instance = [[self alloc] initWithPrimaryKey:primaryKey];
+    BOOL done = [instance insert];
+    return (done? instance : nil);
+}
+
+
++ (instancetype)select:(id)primaryKey {
+    SQLEntity *instance = [[self alloc] initWithPrimaryKey:primaryKey];
+    BOOL done = [instance fetch];
+    return (done? instance : nil);
+}
+
+
+- (BOOL)insert {
+    //TODO: Build INSERT statement
+    return NO;
+}
+
+
+- (BOOL)fetch {
+    //TODO: Build SELECT statement
+    return NO;
+}
+
+
+- (BOOL)doesExist {
+    //TODO: Build ??? statement
+    return NO;
+}
+
+
+- (BOOL)revert {
+    //TODO: Basically -fetch again
+    return NO;
+}
+
+
+- (BOOL)save {
+    //TODO: Build UPDATE statement
+    return NO;
+}
+
+
+- (BOOL)replace:(id)primaryKey {
+    //TODO: Store on the new primaryKey
+    return NO;
+}
+
+
+- (BOOL)delete {
+    //TODO: Build DELETE statement
+    return NO;
+}
+
+
+
+
+
+
+
 + (NSString *)sql_instanceNameFromClassName:(NSString *)class {
     NSScanner *scanner = [NSScanner scannerWithString:class];
     scanner.caseSensitive = YES;
