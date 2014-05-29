@@ -36,6 +36,11 @@
 
 
 
+- (instancetype)init {
+    return [self initWithPrimaryKey:nil];
+}
+
+
 - (instancetype)initWithPrimaryKey:(id)primaryKey {
     self = [super init];
     if (self) {

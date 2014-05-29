@@ -31,6 +31,11 @@
 
 
 
+- (instancetype)init {
+    return [self initWithEntity:nil property:nil];
+}
+
+
 - (instancetype)initWithEntity:(Class)entityClass property:(objc_property_t)property {
     self = [super init];
     if (self) {

@@ -14,6 +14,10 @@
 
 @implementation SQLColumn
 
+- (instancetype)init {
+    return [self initWithName:nil];
+}
+
 - (instancetype)initWithName:(NSString *)name {
     self = [super init];
     if (self) {

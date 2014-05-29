@@ -16,10 +16,15 @@
 
 
 
+
+- (instancetype)init {
+    return [self initWithSQLString:nil];
+}
+
 - (instancetype)initWithSQLString:(SQLString *)string {
     self = [super init];
     if (self) {
-        self->_SQL = string;
+        self->_SQL = string ?: [SQLString new];
     }
     return self;
 }
