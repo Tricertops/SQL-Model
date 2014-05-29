@@ -28,6 +28,9 @@
 + (instancetype)arguments:(NSArray *)arguments joinedWithString:(NSString *)string;
 
 
+@property (readonly) NSUInteger length;
+
+
 @end
 
 

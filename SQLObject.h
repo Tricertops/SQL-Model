@@ -9,6 +9,7 @@
 @import Foundation;
 
 #import "SQLString.h"
+#import "SQLAssert.h"
 
 
 
